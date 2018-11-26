@@ -1,17 +1,16 @@
 # include <bits/stdc++.h>
-  using namespace std;
   struct rope{
       long long key, prior, kol;
       rope *l, *r;
       rope(long long ke, long long pri = (rand()^rand())) : key(ke), prior(pri), kol(1), l(NULL), r(NULL) {}
   };
   typedef rope * node;
-  
+
   long long get_tree_kol(node tree){
 	  if(tree == NULL) return 0;
 	  return (tree->kol);
   }
-  
+
   void merge_t(node &t, node l, node r){
       if(l == NULL) t = r;
       else if(r == NULL) t = l;
@@ -26,7 +25,7 @@
         t->kol = get_tree_kol(t->l) + get_tree_kol(t->r) + 1;
       }
   }
-  
+
   void split_t(node t, int k, node &l, node &r){
       if(t == NULL) return void ( l = r = NULL );
       if((t->key) >= k){
@@ -42,7 +41,7 @@
         if(r != NULL) r->kol = get_tree_kol(r->l) + get_tree_kol(r->r) + 1;
       }
   }
-  
+
   int insert_t(node &t, node it){
       if(t == NULL){
 		  t = it;
@@ -55,7 +54,7 @@
       merge_t(t, t, C);
       return ans;
   }
-  
+
   void remove_t(node &t, long long x){
       if(t == NULL) return;
       node A, B, C;
@@ -76,19 +75,19 @@
   int main(){
       srand( time(NULL) );
       long long n;
-      cin >> n;
+      std::cin >> n;
       node t = NULL;
       for(int i = 1; i <= n; i++){
         int a;
-        cin >> a;
+        std::cin >> a;
         if(a == 1){
             int x;
-            cin >> x;
-            cout << insert_t(t, new rope(x)) << '\n';
+            std::cin >> x;
+            std::cout << insert_t(t, new rope(x)) << '\n';
         }
         else {
 			int y;
-			cin >> y;
+			std::cin >> y;
             y = y + 1;
 			remove_t(t, get_key_by_id(t, y));
         }
