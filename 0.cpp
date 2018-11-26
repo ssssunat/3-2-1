@@ -1,5 +1,4 @@
 # include<bits/stdc++.h>
-using namespace std;
 long long y = 1e10;
 struct item{
    long long  key , prior ;
@@ -27,7 +26,7 @@ void add_node(TreeNode &tree, int x){
 
 int count_deep(TreeNode tree){
    if(tree == NULL) return 0;
-   return max(count_deep(tree->leftTree), count_deep(tree->rightTree)) + 1;
+   return std::max(count_deep(tree->leftTree), count_deep(tree->rightTree)) + 1;
 }
 
 ///
@@ -61,15 +60,15 @@ int main(){
     srand( time(0) );
    	long long  n , i , x , e = 0 ;
     char a;
-    cin>>n;
+    std::cin>>n;
     pitem t=NULL;
 	TreeNode tree = NULL;
     for(i=1;i<=n;i++){
-        cin >> x >> y;
+        std::cin >> x >> y;
 		add_node(tree, x);
         inser(t , new item(x , y));
     }
     dfs(t , 0);
-	cout << (count_deep(tree) - 1) - mx;
+	std::cout << (count_deep(tree) - 1) - mx;
 	return 0;
 }
