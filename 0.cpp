@@ -68,6 +68,6 @@ int main(){
         inser(t , new item(x , y));
     }
     dfs(t , 0);
-	std::cout << (count_deep(tree) - 1) - mx;
-	return 0;
+    std::cout << (count_deep(tree) - 1) - mx;
+    return 0;
 }
